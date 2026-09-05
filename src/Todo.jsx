@@ -4,6 +4,7 @@ import "./Todo.css";
 function Todo() {
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);
+  const [completed, setCompleted] = useState([]);
 
   const addTask = () => {
     if (task !== "") {
@@ -15,6 +16,11 @@ function Todo() {
   const deleteTask = (index) => {
     setTasks(tasks.filter((_, i) => i !== index));
   };
+  const completeTask = (index) => {
+  const newCompleted = [...completed];
+  newCompleted[index] = !newCompleted[index];
+  setCompleted(newCompleted);
+};
 
   return (
     <div className="todo">
@@ -31,9 +37,16 @@ function Todo() {
 
       <ul>
         {tasks.map((item, index) => (
-          <li key={index}>
-            {item}
+          <li
+             key={index}
+             style={{ textDecoration: completed[index] ? "line-through" : "none" }}
+>
+            {item} 
+           <button onClick={() => completeTask(index)}>
+           {completed[index] ? "Completed" : "Complete"}
+           </button>
             <button onClick={() => deleteTask(index)}>Delete</button>
+            
           </li>
         ))}
       </ul>
