@@ -5,6 +5,15 @@ function Todo() {
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);
   const [completed, setCompleted] = useState([]);
+  const editTask = (index) => {
+  const newTask = prompt("Edit task", tasks[index]);
+
+  if (newTask !== null && newTask !== "") {
+    const newTasks = [...tasks];
+    newTasks[index] = newTask;
+    setTasks(newTasks);
+  }
+};
 
   const addTask = () => {
     if (task !== "") {
@@ -42,6 +51,7 @@ function Todo() {
              style={{ textDecoration: completed[index] ? "line-through" : "none" }}
 >
             {item} 
+            <button onClick={() => editTask(index)}>Edit</button>
            <button onClick={() => completeTask(index)}>
            {completed[index] ? "Completed" : "Complete"}
            </button>
