@@ -1,8 +1,9 @@
-import Calculator from "./calculator";
+import Todo from "./Todo";
+
 
 
 function App() {
-  return <Calculator />;
+  return <Todo />;
 }
 
 export default App;

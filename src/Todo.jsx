@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./Todo.css";
 
 function Todo() {
   const [task, setTask] = useState("");
@@ -16,7 +17,7 @@ function Todo() {
   };
 
   return (
-    <div>
+    <div className="todo">
       <h1>Todo List</h1>
 
       <input
